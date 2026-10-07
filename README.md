@@ -1,4 +1,4 @@
-# questioning-meter
+# claude-code-cockpit
 
 A Claude Code mod that adds a **Cockpit** pane and a status band above the prompt. It shows how clear an interview has become, enforces the interview's rules, and keeps an eye on the agent tooling around it: AI quota, hook runs, and background subagent runs.
 
@@ -44,13 +44,13 @@ Nothing is blocked until an interview starts, so a skill that never calls the me
 Clone it anywhere:
 
 ```bash
-git clone https://github.com/m-esm/questioning-meter.git ~/questioning-meter
+git clone https://github.com/m-esm/claude-code-cockpit.git ~/claude-code-cockpit
 ```
 
 Terminal, for one session:
 
 ```bash
-claude --plugin-dir ~/questioning-meter
+claude --plugin-dir ~/claude-code-cockpit
 ```
 
 Desktop app, or every session: add the folder to the `env` block of `~/.claude/settings.json`, then start a new session.
@@ -58,7 +58,7 @@ Desktop app, or every session: add the folder to the `env` block of `~/.claude/s
 ```json
 {
   "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "~/questioning-meter"
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/claude-code-cockpit"
   }
 }
 ```
@@ -67,7 +67,7 @@ Open the pane with `/cockpit` (or `/clarity`). `/clarity reset` clears the inter
 
 ## Reporting an interview: the meter tool
 
-The mod registers `mcp__questioning-meter__meter`. Any interviewing skill can report through it. Call it right before each `AskUserQuestion` and await the result.
+The mod registers `mcp__claude-code-cockpit__meter`. Any interviewing skill can report through it. Call it right before each `AskUserQuestion` and await the result.
 
 | `event` | When |
 | --- | --- |
@@ -102,7 +102,7 @@ Every call carries the whole current picture. Keep each open item's `id` stable 
 
 Lenses: User, Outcome, Scope, Execution, Constraint, Risk, Alternative, Contrarian. Moves: Clarify, Dig, Explore, Challenge, Brainstorm, Panel, Converge. The full JSON schema is `METER_SCHEMA` in `hooks/interview.ts`.
 
-A second tool, `mcp__questioning-meter__status`, returns the whole Cockpit as JSON for an agent to read.
+A second tool, `mcp__claude-code-cockpit__status`, returns the whole Cockpit as JSON for an agent to read.
 
 ## Layout
 

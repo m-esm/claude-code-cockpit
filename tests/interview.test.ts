@@ -43,7 +43,7 @@ test('blocks a question without a fresh meter call', async () => {
   let current = started()
   current = ask(current, 't1')
   const decision = checkAsk(current, null, 1)
-  expect(decision.block?.includes('call mcp__questioning-meter__meter')).toBe(true)
+  expect(decision.block?.includes('call mcp__claude-code-cockpit__meter')).toBe(true)
   expect(decision.interview.blocks).toBe(1)
 })
 

@@ -4,7 +4,7 @@ import type { HookRow, SsaRun } from '../types'
 import { clarityChart, escapeXml, hooksChart, progressBar, quotaChart, quotaRows, runStrip } from '../hooks/charts'
 import { parseQuota } from '../hooks/feeds'
 
-const PANE = { plugin: 'questioning-meter', component: 'Pane', requestId: 'questioning-meter' } as const
+const PANE = { plugin: 'claude-code-cockpit', component: 'Pane', requestId: 'claude-code-cockpit' } as const
 const PANE_PROPS = { title: 'Cockpit', isFocused: true, bodyColumns: 70, placement: 'dock', scroll: { offset: 0, bodyRows: 80 }, view: {} } as const
 
 const METER = {
@@ -57,8 +57,8 @@ test('pane draws cards with svg charts on desktop and text bars on terminal', as
   mock.clock(on, { now: Date.parse('2026-10-07T09:00:00Z') })
   mock.store(on)
   mock.env(on, { HOME: '/home/test', TMPDIR: '/tmp/' })
-  await $.tool.call({ tool: 'mcp__questioning-meter__meter', tool_use_id: 'seed-1', event: 'start', ...METER, questions: [] } as never)
-  await $.tool.call({ tool: 'mcp__questioning-meter__meter', tool_use_id: 'seed-2', event: 'stop_check', ...METER, clarity: 7, questions: [{ text: 'Where next?', lens: 'Outcome', move: 'Converge' }] } as never)
+  await $.tool.call({ tool: 'mcp__claude-code-cockpit__meter', tool_use_id: 'seed-1', event: 'start', ...METER, questions: [] } as never)
+  await $.tool.call({ tool: 'mcp__claude-code-cockpit__meter', tool_use_id: 'seed-2', event: 'stop_check', ...METER, clarity: 7, questions: [{ text: 'Where next?', lens: 'Outcome', move: 'Converge' }] } as never)
 
   const desktop = await $.ui.mount({ ...PANE, surface: 'desktop', props: PANE_PROPS })
   expect(await desktop.find({ text: /Cockpit/ })).toBeDefined()
