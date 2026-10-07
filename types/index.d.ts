@@ -106,7 +106,7 @@ export type Sections = { questioning: boolean; quota: boolean; hooks: boolean; s
 
 declare module 'claude-code' {
   interface PluginState {
-    'questioning-meter': {
+    'claude-code-cockpit': {
       meter: Meter | null
       isBandHidden: boolean
       interview: Interview

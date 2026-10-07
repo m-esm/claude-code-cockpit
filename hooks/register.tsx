@@ -9,9 +9,9 @@ import { replay } from './meter'
 import { Band, Cockpit } from './components'
 import type { CockpitActions, CockpitData } from './components'
 
-const PANE = 'questioning-meter'
+const PANE = 'claude-code-cockpit'
 const TITLE = 'Cockpit'
-const METER_TOOL = 'mcp__questioning-meter__meter'
+const METER_TOOL = 'mcp__claude-code-cockpit__meter'
 const COUNTDOWN_MS = 30000
 const TICK_MS = 2000
 const ACTIVE_WINDOW_MS = 30000
@@ -28,14 +28,14 @@ const SSA_URL = 'https://github.com/m-esm/smart-subagents'
 const IDLE_PANEL: Panel = { phase: 'idle', itemId: '', label: '', deadline: 0, message: '', startedAt: 0, goalFile: '' }
 const ALL_OPEN: Sections = { questioning: true, quota: true, hooks: true, subagents: true }
 
-const meter = atom({ plugin: 'questioning-meter', key: 'meter' } as const, null)
-const isBandHidden = atom({ plugin: 'questioning-meter', key: 'isBandHidden' } as const, false)
-const interview = atom({ plugin: 'questioning-meter', key: 'interview' } as const, emptyInterview())
-const panel = atom({ plugin: 'questioning-meter', key: 'panel' } as const, IDLE_PANEL)
-const quota = atom({ plugin: 'questioning-meter', key: 'quota' } as const, emptyFeed<QuotaSnapshot>())
-const hooks = atom({ plugin: 'questioning-meter', key: 'hooks' } as const, emptyFeed<HooksSnapshot>())
-const ssa = atom({ plugin: 'questioning-meter', key: 'ssa' } as const, emptyFeed<SsaSnapshot>())
-const sections = atom({ plugin: 'questioning-meter', key: 'sections' } as const, ALL_OPEN)
+const meter = atom({ plugin: 'claude-code-cockpit', key: 'meter' } as const, null)
+const isBandHidden = atom({ plugin: 'claude-code-cockpit', key: 'isBandHidden' } as const, false)
+const interview = atom({ plugin: 'claude-code-cockpit', key: 'interview' } as const, emptyInterview())
+const panel = atom({ plugin: 'claude-code-cockpit', key: 'panel' } as const, IDLE_PANEL)
+const quota = atom({ plugin: 'claude-code-cockpit', key: 'quota' } as const, emptyFeed<QuotaSnapshot>())
+const hooks = atom({ plugin: 'claude-code-cockpit', key: 'hooks' } as const, emptyFeed<HooksSnapshot>())
+const ssa = atom({ plugin: 'claude-code-cockpit', key: 'ssa' } as const, emptyFeed<SsaSnapshot>())
+const sections = atom({ plugin: 'claude-code-cockpit', key: 'sections' } as const, ALL_OPEN)
 
 const poll = { quotaAt: 0, logsAt: 0, ssaAt: 0, quotaBusy: false, logsBusy: false, ssaBusy: false }
 const logs: { jev: HookRow[]; gate: HookRow[]; size: Record<string, number> } = { jev: [], gate: [], size: {} }
@@ -547,7 +547,7 @@ export const register: Register = on => {
     return { result: await handleMeter($, input) }
   })
 
-  on('tool.call', { tool: 'mcp__questioning-meter__status' }, async $ => ({ result: await statusReport($) }))
+  on('tool.call', { tool: 'mcp__claude-code-cockpit__status' }, async $ => ({ result: await statusReport($) }))
 
   on('tool.call', { tool: 'AskUserQuestion' }, async ($, e, next) => {
     if (e.agentId !== undefined) return next(e)

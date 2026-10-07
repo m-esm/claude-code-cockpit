@@ -225,7 +225,7 @@ export const checkAsk = (current: Interview, meter: Meter | null, questionCount:
 
   if (current.permits.length === 0) {
     return {
-      block: 'Questioning enforcer: call mcp__questioning-meter__meter (event "question" or "stop_check", with this question\'s lens and move) before AskUserQuestion.',
+      block: 'Questioning enforcer: call mcp__claude-code-cockpit__meter (event "question" or "stop_check", with this question\'s lens and move) before AskUserQuestion.',
       warnings: [],
       interview: { ...current, blocks: current.blocks + 1 },
       fromStop: false,
