@@ -1,0 +1,11 @@
+{
+  "name": "questioning-meter",
+  "version": "0.3.0",
+  "description": "Cockpit pane and band for Claude Code: interview clarity meter with a rule enforcer and auto panel, AI quota, live hooks, and background subagent runs",
+  "author": { "name": "m-esm", "url": "https://github.com/m-esm" },
+  "homepage": "https://github.com/m-esm/questioning-meter",
+  "repository": "https://github.com/m-esm/questioning-meter",
+  "license": "MIT",
+  "keywords": ["claude-code", "mod", "dashboard", "interview", "quota", "hooks"],
+  "types": "./types/index.d.ts"
+}
